@@ -21,3 +21,5 @@ Downloads
 .config/dolphinrc
 .config/dolphinrc
 .config/kdeglobals
+.gnupg/
+.ssh/
