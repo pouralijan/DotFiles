@@ -1,0 +1,18 @@
+## Alias section 
+
+alias REPOS='cd /mnt/MyWorkstation/Sources/Repos'
+alias MY_REPOS='cd /mnt/MyWorkstation/Sources/MyRepos'
+alias WORKSTATION='cd /mnt/MyWorkstation/'
+
+alias cp="cp -i"
+alias df='df -h'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+alias free='free -m'
+alias grep='grep --colour=auto'
+alias ls='lsd'
+alias la='ls -a'
+alias lal='ll -a'
+alias ll='ls -l'
+alias more='less'
+alias vim='nvim -p'
