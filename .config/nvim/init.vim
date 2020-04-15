@@ -4,52 +4,52 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 if has('nvim')
-  " UI related
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  "" UI related
+  "Plug 'vim-airline/vim-airline'
+  "Plug 'vim-airline/vim-airline-themes'
 
-  " Better Visual Guide
-  Plug 'Yggdroot/indentLine'
+  "" Better Visual Guide
+  "Plug 'Yggdroot/indentLine'
 
-  " syntax check
-  Plug 'scrooloose/syntastic'
+  "" syntax check
+  "Plug 'scrooloose/syntastic'
 
-  " Autocomplete
-  " Plug 'ncm2/ncm2'
-  " Plug 'roxma/nvim-yarp'
-  " Plug 'ncm2/ncm2-bufword'
-  " Plug 'ncm2/ncm2-path'
-  " Plug 'ncm2/ncm2-jedi'
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " Plug 'zchee/deoplete-clang'
-  " Plug 'valloric/youcompleteme'
+  "" Autocomplete
+  "" Plug 'ncm2/ncm2'
+  "" Plug 'roxma/nvim-yarp'
+  "" Plug 'ncm2/ncm2-bufword'
+  "" Plug 'ncm2/ncm2-path'
+  "" Plug 'ncm2/ncm2-jedi'
+  "" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "" Plug 'zchee/deoplete-clang'
+  Plug 'valloric/youcompleteme'
 
-  " Html
-  Plug 'mattn/emmet-vim'
+  "" Html
+  "Plug 'mattn/emmet-vim'
 
-  " Formater
-  Plug 'Chiel92/vim-autoformat'
+  "" Formater
+  "Plug 'Chiel92/vim-autoformat'
 
 
-  " Color
-  Plug 'dracula/vim'
+  "" Color
+  "Plug 'dracula/vim'
 
-  " NerdTree
-  Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
+  "" NerdTree
+  "Plug 'scrooloose/nerdtree'
+  "Plug 'Xuyuanp/nerdtree-git-plugin'
 
-  " Git
-  Plug 'airblade/vim-gitgutter'
+  "" Git
+  "Plug 'airblade/vim-gitgutter'
 
-  " Plug 'lambdalisue/suda.vim'
-  " Plug 'metakirby5/codi.vim'
+  "" Plug 'lambdalisue/suda.vim'
+  "" Plug 'metakirby5/codi.vim'
 
 endif
 
 " Initialize plugin system
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 " set HTML auto complite key
 let g:user_emmet_leader_key=','
@@ -145,23 +145,22 @@ augroup END
 
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle NERDTree
 " Can't get <C-Space> by itself to work, so this works as Ctrl - space - space
 " https://github.com/neovim/neovim/issues/3101
 " http://stackoverflow.com/questions/7722177/how-do-i-map-ctrl-x-ctrl-o-to-ctrl-space-in-terminal-vim#answer-24550772
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-Space> :NERDTreeToggle<CR>
 nmap <C-@> <C-Space>
 nnoremap <silent> <Space> :NERDTreeToggle<CR>
-
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
 " Automatically delete the buffer of the file you just deleted with NerdTree
 let NERDTreeAutoDeleteBuffer = 1
-
 " let NERDTreeMapOpenInTab = 1
-
 autocmd BufWinEnter * NERDTreeMirror
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " =====================================
 " vim-airline status
@@ -242,6 +241,11 @@ let g:syntastic_cpp_check_header = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-" let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:ycm_use_clangd = 0
+" set encoding=utf-8
+" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
