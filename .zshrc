@@ -1,25 +1,29 @@
 neofetch
 
 
-pacman -Qs zsh-autosuggestions > /dev/null
-if [[ $? != 0 ]]
+lsb_release -d | grep -i manjaro >> /dev/null
+if [[ $? == 0 ]]
 then
-	echo "Installing zsh-autosuggestions"
-	sudo pacman -S zsh-autosuggestions
-fi
+	pacman -Qs zsh-autosuggestions > /dev/null
+	if [[ $? != 0 ]]
+	then
+		echo "Installing zsh-autosuggestions"
+		sudo pacman -S zsh-autosuggestions
+	fi
 
-pacman -Qs zsh-syntax-highlighting > /dev/null
-if [[ $? != 0 ]]
-then
-	echo "Installing zsh-syntax-highlighting"
-	sudo pacman -S zsh-syntax-highlighting
-fi
+	pacman -Qs zsh-syntax-highlighting > /dev/null
+	if [[ $? != 0 ]]
+	then
+		echo "Installing zsh-syntax-highlighting"
+		sudo pacman -S zsh-syntax-highlighting
+	fi
 
-pacman -Qs zsh-history-substring-search > /dev/null
-if [[ $? != 0 ]]
-then
-	echo "Installing zsh-history-substring-search"
-	sudo pacman -S zsh-history-substring-search
+	pacman -Qs zsh-history-substring-search > /dev/null
+	if [[ $? != 0 ]]
+	then
+		echo "Installing zsh-history-substring-search"
+		sudo pacman -S zsh-history-substring-search
+	fi
 fi
 
 enable_zsh_autosuggestions()
