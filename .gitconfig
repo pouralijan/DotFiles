@@ -1,0 +1,25 @@
+[color]
+	ui = auto
+
+[user]
+	name = Hassan Pouralijan
+	email = pouralijan@gmail.com
+	signingkey = F7EBC6471D37069F
+
+[gpg]
+	program = gpg2
+
+[commit]
+	gpgsign = true
+
+[alias]
+	st = status
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[lfs]
+	batch = false
