@@ -70,3 +70,6 @@ Music
 Pictures
 Public
 Templates
+.ipython/
+.pythonhist
+.config/nvim/.netrwhist

@@ -22,7 +22,7 @@ if has('nvim')
   "" Plug 'ncm2/ncm2-jedi'
   "" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   "" Plug 'zchee/deoplete-clang'
-  Plug 'valloric/youcompleteme'
+  "Plug 'valloric/youcompleteme'
 
   "" Html
   "Plug 'mattn/emmet-vim'
@@ -35,11 +35,11 @@ if has('nvim')
   "Plug 'dracula/vim'
 
   "" NerdTree
-  "Plug 'scrooloose/nerdtree'
-  "Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 
   "" Git
-  "Plug 'airblade/vim-gitgutter'
+  Plug 'airblade/vim-gitgutter'
 
   "" Plug 'lambdalisue/suda.vim'
   "" Plug 'metakirby5/codi.vim'

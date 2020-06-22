@@ -39,3 +39,7 @@ texlive-bin
 tk
 vim-plugins
 variety
+tmux
+python-urwid
+python-watchdog
+bpython
