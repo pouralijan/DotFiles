@@ -73,3 +73,6 @@ Templates
 .ipython/
 .pythonhist
 .config/nvim/.netrwhist
+.java
+.android
+.AndroidStudio3.6
