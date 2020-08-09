@@ -23,3 +23,7 @@
 
 [lfs]
 	batch = false
+
+[core]
+	hookspath = .githooks
+	pager = 

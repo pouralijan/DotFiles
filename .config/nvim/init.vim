@@ -44,6 +44,8 @@ if has('nvim')
   "" Plug 'lambdalisue/suda.vim'
   "" Plug 'metakirby5/codi.vim'
 
+  Plug 'terryma/vim-multiple-cursors'
+
 endif
 
 " Initialize plugin system
