@@ -1,0 +1,1 @@
+/home/hassan/.config/qtile/myconfigs/config.py

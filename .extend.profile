@@ -39,3 +39,13 @@ export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 export WINEPREFIX="/mnt/Programs/WinePrefix/"
 export PATH=${WINEPREFIX}:${PATH}
+
+export FLUTTERPREFIX="/mnt/Programs/LinuxPrograms/flutter/bin/"
+export PATH=${FLUTTERPREFIX}:${PATH}
+
+export DART_PUB_CACHE_BIN_PATH="$HOME/.pub-cache/bin"
+export PATH=${DART_PUB_CACHE_BIN_PATH}:${PATH}
+
+export WALPREFIX="/mnt/Programs/LinuxPrograms/wal/bin/"
+export PATH=${WALPREFIX}:${PATH}
+

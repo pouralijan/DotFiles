@@ -225,4 +225,5 @@ esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.profile ] && source ~/.profile
+[ -f ~/.extend.profile ] && source ~/.extend.profile
 [ -f ~/.alias ] && source ~/.alias
