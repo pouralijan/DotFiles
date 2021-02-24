@@ -34,7 +34,8 @@
     "json",
     "python",
     "java",
-    "dart"
+    "dart",
+    "c++"
   ],
   "coc.preferences.hoverTarget": "float",
 

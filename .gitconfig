@@ -4,13 +4,6 @@
 [user]
 	name = Hassan Pouralijan
 	email = pouralijan@gmail.com
-	signingkey = F7EBC6471D37069F
-
-[gpg]
-	program = gpg2
-
-[commit]
-	gpgsign = true
 
 [alias]
 	st = status
@@ -27,3 +20,4 @@
 [core]
 	hookspath = .githooks
 	pager = 
+	editor = nvim

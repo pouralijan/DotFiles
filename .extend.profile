@@ -9,6 +9,10 @@ export ANDROID_SDK_ROOT="/mnt/Programs/LinuxPrograms/AndroidSDK/"
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
+export ANDROID_SDK_TOOLS="/mnt/Programs/LinuxPrograms/AndroidSDK/tools/bin/"
+export PATH=$ANDROID_SDK_TOOLS:$PATH
+
+
 # Add environment variable ANDROID_ADV_ROOT
 export ANDROID_ADV_ROOT="/mnt/Programs/LinuxPrograms/AndroidSDK/.android/"
 export PATH=$ANDROID_ADV_ROOT:$PATH
@@ -24,10 +28,6 @@ export PATH=$COCOS_CONSOLE_ROOT:$PATH
 # Add environment variable COCOS_X_ROOT for cocos2d-x
 export COCOS_X_ROOT="/mnt/Workstation/Sources/Repos"
 export PATH=$COCOS_X_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT="/mnt/Workstation/Sources/Repos/cocos2d-x/templates"
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
 export COCOS_TEMPLATES_ROOT="/mnt/Workstation/Sources/Repos/cocos2d-x/templates"

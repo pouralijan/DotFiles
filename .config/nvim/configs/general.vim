@@ -1,6 +1,6 @@
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set formatoptions-=cro                  " Stop newline continution of comments
-
+"
 set pumheight=10                        " Makes popup menu smaller
 set ruler              			" Show the cursor position all the time
 set mouse=                              " Disable your mouse
@@ -12,17 +12,17 @@ set nowritebackup                       " This is recommended by coc
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set incsearch
-
+"
 set encoding=utf-8                      " The encoding displayed
 set fileencoding=utf-8                  " The encoding written to file
 set enc=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
-
+"
 set guifont=Monaco:h11
 set guifontwide=NSimsun:h12
-
-" New stuff
+"
+"" New stuff
 set notimeout nottimeout
 set scrolloff=1
 set sidescroll=1
@@ -32,7 +32,7 @@ set backspace=eol,start,indent
 set nostartofline
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set mmp=1300
-set autochdir                           " Your working directory will always be the same as your working directory
+"set autochdir                           " Your working directory will always be the same as your working directory
 set foldcolumn=2                        " Folding abilities
 
 " You can't stop me
@@ -51,6 +51,41 @@ set noexpandtab
 set autoindent
 set copyindent
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" file type recognition
+filetype on
+filetype plugin on
+filetype indent on
+
+" syntax highlighting
+syntax on
+
+" showmode since using vim-airline; otherwise use 'set showmode'
+set noshowmode
+
+" open new split panes to right and below (as you probably expect)
+set splitright
+set splitbelow
+
+" keep cursor vertical in 20% on top or bottom.
+augroup VCenterCursor
+  au!
+  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid()) * 20 / 100
+augroup END
+
+" highlight matches when searching
+set hlsearch
+
+" Line numbering
+set number relativenumber
+
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+augroup END
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

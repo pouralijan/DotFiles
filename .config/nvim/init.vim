@@ -10,6 +10,7 @@ source $HOME/.config/nvim/configs/general.vim
 "" Themes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source $HOME/.config/nvim/configs/plugs/themes/general.vim
+source $HOME/.config/nvim/configs/plugs/keys.vim
 source $HOME/.config/nvim/configs/plugs/themes/airline.vim
 ""source $HOME/.config/nvim/configs/plugs/themes/vim-gotham.vim
 ""source $HOME/.config/nvim/configs/plugs/themes/vim-dogrun.vim
@@ -21,10 +22,11 @@ source $HOME/.config/nvim/configs/plugs/themes/airline.vim
 ""source $HOME/.config/nvim/configs/plugs/themes/oceanic.vim
 ""source $HOME/.config/nvim/configs/plugs/themes/vim-one.vim
 ""source $HOME/.config/nvim/configs/plugs/themes/molokayo.vim
-"source $HOME/.config/nvim/configs/plugs/themes/nord-vim.vim
+source $HOME/.config/nvim/configs/plugs/themes/nord-vim.vim
 "
 "
 "
+source $HOME/.config/nvim/configs/plugs/nerdtree.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source $HOME/.config/nvim/configs/plugs/coc.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -32,11 +34,11 @@ source $HOME/.config/nvim/configs/plugs/quickscope.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source $HOME/.config/nvim/configs/plugs/codi.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"source $HOME/.config/nvim/configs/plugs/sneak.vim
+source $HOME/.config/nvim/configs/plugs/sneak.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Git
-"source $HOME/.config/nvim/configs/plugs/gitgutter.vim
-"source $HOME/.config/nvim/configs/plugs/git-messenger.vim
+source $HOME/.config/nvim/configs/plugs/gitgutter.vim
+source $HOME/.config/nvim/configs/plugs/git-messenger.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -44,11 +46,13 @@ source $HOME/.config/nvim/configs/plugs/codi.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"source $HOME/.config/nvim/configs/plugs/closetags.vim
+source $HOME/.config/nvim/configs/plugs/closetags.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
+source $HOME/.config/nvim/configs/plugs/vim-latex-live-preview.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" source $HOME/.config/nvim/configs/plugs/xtabline.vim
+" source $HOME/.config/nvim/configs/plugs/xtabline.vim
+source $HOME/.config/nvim/configs/plugs/vem-tabline.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

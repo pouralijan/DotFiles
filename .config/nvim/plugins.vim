@@ -28,28 +28,37 @@ call plug#begin('~/.local/share/nvim/autoload/plugged')
    Plug 'junegunn/gv.vim'
    Plug 'rhysd/git-messenger.vim'
 
+   " emoji
+   Plug 'junegunn/vim-emoji'
 
-   " " Terminal
-   " Plug 'voldikss/vim-floaterm'
 
-   " " Cool Icons
-   " Plug 'ryanoasis/vim-devicons'
+   " Terminal
+   Plug 'voldikss/vim-floaterm'
 
-   " " Smooth scroll
-   " Plug 'psliwka/vim-smoothie'
+   " Cool Icons
+   Plug 'ryanoasis/vim-devicons'
 
-   " " Snippets
-   " Plug 'honza/vim-snippets'
-   " Plug 'mattn/emmet-vim'
+   " Smooth scroll
+   Plug 'psliwka/vim-smoothie'
 
-   " " Closetags
-   " Plug 'alvan/vim-closetag'
+   " Snippets
+   Plug 'honza/vim-snippets'
+   Plug 'mattn/emmet-vim'
 
-   " " Better tabline
-   " " Plug 'mg979/vim-xtabline'
+   " Closetags
+   Plug 'alvan/vim-closetag'
+
+   " Better tabline
+   " Plug 'mg979/vim-xtabline'
+   " Plug 'pacha/vem-tabline'
 
    " " undo time travel
    " Plug 'mbbill/undotree'
+
+   Plug 'preservim/nerdtree'
+   Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+   
+
 
    " " Change dates fast
    " Plug 'tpope/vim-speeddating'
@@ -64,7 +73,7 @@ call plug#begin('~/.local/share/nvim/autoload/plugged')
    " Plug 'kristijanhusak/vim-hybrid-material'
    " Plug 'tomasr/molokai'
    " Plug 'fmoralesc/molokayo'
-   " Plug 'arcticicestudio/nord-vim'
+   Plug 'arcticicestudio/nord-vim'
    " Plug 'mhartington/oceanic-next'
    " Plug 'rakr/vim-one'
    " 
@@ -82,12 +91,14 @@ call plug#begin('~/.local/share/nvim/autoload/plugged')
    " Plug 'skywind3000/asynctasks.vim'
    " Plug 'skywind3000/asyncrun.vim'
 
+   " Latex live preview
+   Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
-   " " Dart and Flutter
-   " Plug 'dart-lang/dart-vim-plugin'
-   " Plug 'natebosch/vim-lsc'
-   " Plug 'natebosch/vim-lsc-dart'
-   " Plug 'thosakwe/vim-flutter'
+   " Dart and Flutter
+   Plug 'dart-lang/dart-vim-plugin'
+   Plug 'natebosch/vim-lsc'
+   Plug 'natebosch/vim-lsc-dart'
+   Plug 'thosakwe/vim-flutter'
 
 "    " Convert binary, hex, etc..
 "    Plug 'glts/vim-radical'
