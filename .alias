@@ -1,0 +1,19 @@
+## Alias section 
+
+alias config='/usr/bin/git --git-dir=/home/hassan/.cfg/ --work-tree=/home/hassan'
+
+alias W='cd /mnt/Workstation/'
+alias S='cd /mnt/Workstation/Sources/'
+
+alias cp="cp -i"
+alias df='df -h'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+alias free='free -m'
+alias grep='grep --colour=auto'
+alias ls='lsd'
+alias la='ls -a'
+alias lal='ll -a'
+alias ll='ls -l'
+alias more='less'
+alias vim='nvim -p'
