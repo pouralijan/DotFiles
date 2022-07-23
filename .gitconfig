@@ -1,0 +1,23 @@
+[color]
+	ui = auto
+
+[user]
+	name = Hassan Pouralijan
+	email = pouralijan@gmail.com
+
+[alias]
+	st = status
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[lfs]
+	batch = false
+
+[core]
+	hookspath = .githooks
+	pager = 
+	editor = nvim
