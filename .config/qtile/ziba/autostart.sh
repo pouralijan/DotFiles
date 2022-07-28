@@ -11,4 +11,4 @@ blueman-applet &
 #picom --experimental-backend &
 #compton --config ~/.config/compton/compton.conf &
 #compton --config ~/.config/compton/compton.conf &
-picom --experimental-backend &
+picom &

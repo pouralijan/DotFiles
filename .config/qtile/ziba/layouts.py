@@ -9,7 +9,7 @@ def get_layout_theme():
     colors_list = colors.get_colors()
 
     return {"border_width": 3,
-            "margin": 10,
+            "margin": 5,
             "border_focus": colors_list[8][1],
             "border_normal": colors_list[3][1]
             }
@@ -64,13 +64,22 @@ def get_layouts():
     layout_theme = get_layout_theme()
 
     layouts = []
-    layouts.append(layout.MonadTall(**layout_theme, name='monadtall'))
-    # layouts.append(layout.MonadThreeCol(**layout_theme, name='MonadThreeCol'))
-    #layouts.append(layout.MonadWide(**layout_theme, name='monawide'))
-    #layouts.append(layout.Stack(stacks=4, **layout_theme, name='stak'))
-    #layouts.append(layout.Floating(**layout_theme, name='floating'))
-    # layouts.append(layout.Floating(**layout_theme, name='floating',))
-    # layouts.append(get_floating_layout())
-    layouts.append(layout.Max(**layout_theme, name='max'))
     layouts.append(layout.Bsp(**layout_theme, name='bsp'))
+    # layouts.append(layout.Columns(**layout_theme, name='columns'))
+    # layouts.append(layout.Floating(**layout_theme, name='floating'))
+    # layouts.append(layout.Matrix(**layout_theme, name='matrix'))
+    layouts.append(layout.Max(name='max'))
+    layouts.append(layout.MonadTall(**layout_theme, name='monadtall'))
+    # layouts.append(layout.MonadThreeCol(**layout_theme, name='monadthreecol'))
+    # layouts.append(layout.MonadWide(**layout_theme, name='monawide'))
+    # layouts.append(layout.RatioTile(**layout_theme, name='ratiotail'))
+    # layouts.append(layout.Slice(**layout_theme, name='slice'))
+    # layouts.append(layout.Spiral(**layout_theme, name='spiral'))
+    # layouts.append(layout.Stack(**layout_theme, name='stack'))
+    # layouts.append(layout.Tile(**layout_theme, name='tile'))
+    # layouts.append(layout.TreeTab(**layout_theme, name='treetab'))
+    # layouts.append(layout.VerticalTile(**layout_theme, name='verticaltile'))
+    layouts.append(layout.Zoomy(**layout_theme, name='zoomy'))
+    # layouts.append(get_floating_layout())
+
     return layouts

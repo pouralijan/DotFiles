@@ -31,7 +31,6 @@ def select_wallpaper(wallpaper_path):
 #%%
 # SCREENS
 def get_screens():
-    colors_list = colors.get_colors()
     top_widgets = []
     top_widgets.append(widgets.primary_top_widgets())
     # top_widgets.append(widgets.init_top_bar_widgets_list_sc())

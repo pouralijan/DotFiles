@@ -28,9 +28,17 @@ def get_keys():
         Key([mod4, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
         Key([mod4, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
         Key([mod4, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+
+        Key([mod4, "control"], "s", lazy.layout.swap_main()),
+        Key([mod4, "control"], "r", lazy.layout.rotate()),
+
         Key([mod4, "control"], "m", lazy.layout.maximize()),
         Key([mod4, "control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
+        Key([mod4, "control"], "f", lazy.window.toggle_floating(), desc="Reset all window sizes"),
         Key([mod4, "control"], "space", lazy.layout.flip(), desc="Reset all window sizes"),
+
+        Key([mod4, "control"], "Return", lazy.layout.toggle_split()),
         # Toggle between split and unsplit sides of stack.
         # Split = all windows displayed
         # Unsplit = 1 window displayed, like Max layout, but still with
@@ -51,8 +59,8 @@ def get_keys():
         # Toggle between different layouts as defined below
         Key([mod4], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key([mod4], "w", lazy.window.kill(), desc="Kill focused window"),
-        Key([mod4, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-        Key([mod4, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+        Key([mod4, "control", "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+        Key([mod4, "control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
         Key([mod4], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
         Key([mod4], "d", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
         Key([mod4], "space", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),

@@ -1,6 +1,5 @@
 import os
 import subprocess
-from turtle import color
 from libqtile import hook
 from libqtile.utils import guess_terminal
 import pathlib
@@ -19,12 +18,13 @@ def start_once():
 # terminal = guess_terminal()
 
 class Theme:
-    def __init__(self, size, opacity, background, foreground, font="") -> None:
+    def __init__(self, size, opacity, color: colors.Color, font="") -> None:
         self._size = size
         self._opacity = opacity
-        self._background = background
-        self._foreground = foreground
+        self._color = color
     
+        self._last_color = self._color.next_color()
+
     @property
     def size(self):
         return self._size
@@ -34,30 +34,53 @@ class Theme:
         return self._opacity
     
     @property
-    def background(self):
-        return self._background
-
-    @property
     def icon_size(self):
         return self._size - 8
 
     @property
-    def foreground(self):
-        return self._foreground
-    
+    def color(self):
+        return self._color
+
     def get_theme(self):
         raise NotImplemented
+
+class MainTheme(Theme):
+    def get_theme(self):
+        return {
+            "background": self._color.background,
+            "foreground": self._color.foreground,
+        }
 
 class BarTheme(Theme):
     def get_theme(self):
         return {
             "size": self._size,
-            "background": self._background,
+            "background": self._color.background,
+            "foreground": self._color.foreground,
             "opacity": self._opacity,
+            "padding": 10,
+            "margin": 4,
         }
+class WidgetTheme(Theme):
+    def get_theme(self, next_bg_color=False, use_last_color=False):
+        self._last_color = self._color.next_color() if next_bg_color else self._last_color
 
-top_bar_theme = BarTheme(24, .9, colors.get_colors()[2][1], colors.get_colors()[4][1])
-bottom_bar_theme = BarTheme(30, .8, colors.get_colors()[2][1], colors.get_colors()[4][1])
+        return {
+            "size": self._size,
+            "background": self._last_color if use_last_color or next_bg_color else self._color.background,
+            # "foreground": self._color.foreground,
+            "foreground": self._color.background if use_last_color or next_bg_color else self._color.foreground,
+            "opacity": self._opacity,
+            "padding": 10,
+            "margin": 4,
+        }
+    
+cc = colors.get_colors()
+c = colors.Color(cc[0], cc[2], cc[3:])
+main_theme = MainTheme(24, 1, c)
+top_bar_theme = BarTheme(24, .9, c)
+bottom_bar_theme = BarTheme(30, .8, c)
+widget_them = WidgetTheme(30, .8, c)
 
 # wmname = "qtile"
 

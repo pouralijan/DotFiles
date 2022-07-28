@@ -1,67 +1,79 @@
+import copy
 from ctypes import alignment
 from email.policy import default
 import os
 import socket
+from tkinter.tix import Tree
 from turtle import width
+from typing import Tuple
 from libqtile import widget
+from more_itertools import padded
 
 from . import colors
 import ziba
 
-_colors = [["#2e3440", "#2e3440"],  # background
-           ["#242831", "#242831"],  # background alt
-           ["#ffffff", "#ffffff"],  # white
-           ["#ff5555", "#ff5555"],  # white alt
-           ["#797FD4", "#797FD4"],  # violet
-           ["#89aaff", "#89aaff"],  # blue
-           ["#89ddff", "#89ddff"],  # ice
-           ["#E05F27", "#E05F27"],  # orange
-           ["#c3e88d", "#c3e88d"],  # green
-           ["#ffcb6b", "#ffcb6b"],  # orange
-           ["#f07178", "#f07178"]]  # red
 
 colors_list = colors.get_colors()
 group_box_theme = {
-    "padding": 5,
-    "active": colors_list[4][1],
-    "inactive": colors_list[3][1],
-    # "block_highlight_text_color":colors_list[3][1],
-    "highlight_method": 'block',
+    "active": colors_list[4],
+    "inactive": colors_list[3],
+    "highlight_method": "line",
+    "margin_y":3,
+    "margin_x":0,
+    "padding_y":5,
+    "padding_x":3,
+    "borderwidth":3,
+    "rounded": True,
+    "foreground": colors_list[2],
+    "background": colors_list[0],
+    # "this_current_screen_border": colors_list[4],
+    # "this_screen_border": colors_list[3],
+    # "other_current_screen_border": colors_list[4],
+    # "other_screen_border": colors_list[3],
 }
 
-
 def primary_top_widgets():
-    colors_list = colors.get_colors()
     """
     Init top bar widgets.
     """
+    separator = widget.Sep(
+        # padding=0,
+        linewidth=2,
+        background=ziba.main_theme.color.background,
+        foreground=ziba.main_theme.color.background,
+    )
     widgets = []
-    widgets.append(widget.WindowName(font="Ubuntu", fontsize=11,))
+
+    widgets.append(
+        widget.WindowName(
+            font="Ubuntu",
+            fontsize=11,
+            **ziba.widget_them.get_theme(),
+        ))
+
     # temp
+    widgets.append(separator)
     widgets.append(
         widget.TextBox(
             text=" 🌡",
-            padding=2,
-            foreground=_colors[2],
-            background=_colors[0],
+            **ziba.widget_them.get_theme(next_bg_color=True),
         ),
     )
     widgets.append(
         widget.ThermalSensor(
-            foreground=_colors[10],
-            background=_colors[0],
             threshold=90,
-            padding=5
+            # padding=5,
+            **ziba.widget_them.get_theme(use_last_color=True),
         ),
     )
 
+    widgets.append(separator)
     # CPU
     widgets.append(
         widget.TextBox(
             text="⏲ : ",
-            foreground=_colors[6],
-            background=_colors[0],
-            padding=0,
+            # padding=0,
+            **ziba.widget_them.get_theme(next_bg_color=True),
         ),
     )
 
@@ -70,55 +82,110 @@ def primary_top_widgets():
             frequency=1,
             format='{freq_current} GHz {load_percent:>7.2f}%',
             samples=10,
-            foreground=_colors[6],
-            background=_colors[0],
-            padding=10,
+            **ziba.widget_them.get_theme(use_last_color=True),
         ),
     )
 
-    widgets.append(widget.TextBox(
-        font="Ubuntu", text="NET:", padding=5, fontsize=14))
+    widgets.append(separator)
 
     widgets.append(
-        widget.Net(
-            margin=100,
-            format="↓ {down:>7} ↑ {up:>7}"
+        widget.TextBox(
+            font="Ubuntu",
+            text="NET:",
+            fontsize=14,
+            **ziba.widget_them.get_theme(next_bg_color=True),
+        )
+    )
+
+    widgets.append(
+        widget.NetGraph(
+            border_width=1,
+            frequency=.1,
+            line_width=1,
+            type='box',
+            **ziba.widget_them.get_theme(use_last_color=True),
+        )
+    )
+
+    widgets.append(separator)
+
+    widgets.append(
+        widget.TextBox(
+            font="Ubuntu",
+            text="CPU:",
+            fontsize=14,
+            **ziba.widget_them.get_theme(next_bg_color=True),
         ))
-    widgets.append(widget.NetGraph(
-        graph_color=colors_list[6][1],
-        border_width=1,
-        frequency=.1,
-        line_width=1,
-        type='box',
-    ))
-    widgets.append(widget.TextBox(
-        font="Ubuntu",
-        text="CPU:",
-        padding=5,
-        fontsize=14,
-    ))
-    widgets.append(widget.CPUGraph(
-        graph_color=colors_list[6][1], border_width=1, frequency=.1, line_width=1, type='box'))
-    widgets.append(widget.TextBox(
-        font="Ubuntu", text="HDD:", padding=5, fontsize=14))
-    widgets.append(widget.HDDBusyGraph(
-        graph_color=colors_list[6][1], border_width=1, frequency=.1, line_width=1, type='box'))
-    widgets.append(widget.TextBox(
-        font="Ubuntu", text="MEM:", padding=5, fontsize=14))
-    widgets.append(widget.MemoryGraph(
-        graph_color=colors_list[6][1], border_width=1, frequency=.1, line_width=1, type='box'))
+    widgets.append(
+        widget.CPUGraph(
+            border_width=1,
+            frequency=.1,
+            line_width=1,
+            type='box',
+            **ziba.widget_them.get_theme(use_last_color=True),
+        )
+    )
 
-    widgets.append(widget.Volume(padding=5,
-                                 #  volume_app="pactl",
-                                 fmt="Vol: {}",
-                                 ))
-    widgets.append(widget.Systray(padding=5))
+    widgets.append(separator)
+    widgets.append(
+        widget.TextBox(
+            font="Ubuntu",
+            text="HDD:",
+            fontsize=14,
+            **ziba.widget_them.get_theme(next_bg_color=True),
+        )
+    )
+    widgets.append(
+        widget.HDDBusyGraph(
+            border_width=1,
+            frequency=.1,
+            line_width=1,
+            type='box',
+            **ziba.widget_them.get_theme(use_last_color=True),
+        )
+    )
+    widgets.append(separator)
 
-    widgets.append(widget.Clock(
-        background=colors_list[4][1],
-        foreground=colors_list[1][1],
-        format="%A, %B %d - %H:%M",
-    ))
+    widgets.append(
+        widget.TextBox(
+            font="Ubuntu",
+            text="MEM:",
+            fontsize=14,
+            **ziba.widget_them.get_theme(next_bg_color=True),
+        )
+    )
+    widgets.append(
+        widget.MemoryGraph(
+            border_width=1,
+            frequency=.1,
+            line_width=1,
+            type='box',
+            **ziba.widget_them.get_theme(use_last_color=True),
+        )
+    )
+
+    widgets.append(separator)
+    widgets.append(
+        widget.Volume(
+            #  volume_app="pactl",
+            fmt="Vol: {}",
+            **ziba.widget_them.get_theme(next_bg_color=True),
+        )
+    )
+
+    widgets.append(separator)
+    widgets.append(
+        widget.Systray(
+            **ziba.widget_them.get_theme(next_bg_color=True),
+        )
+    )
+
+    widgets.append(separator)
+    widgets.append(
+        widget.Clock(
+            format="%A, %B %d - %H:%M",
+            **ziba.widget_them.get_theme(next_bg_color=True),
+        ))
     return widgets
 
 
@@ -126,31 +193,51 @@ def primary_bottom_widgets():
     """
     Init bottom bar widgets.
     """
-    colors_list = colors.get_colors()
     widgets = []
 
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
-    widgets.append(widget.GroupBox(**group_box_theme))
-    widgets.append(widget.TaskList(
-        parse_text=lambda x: "",
-        highlight_method="block",
-        icon_size=ziba.bottom_bar_theme.icon_size,
-        border=ziba.bottom_bar_theme.foreground,
-        rounded=True,
-        padding=5,
-        txt_floating="🗗",
-        txt_maximized="🗖",
-        txt_minimized="🗕"
-    ))
-    widgets.append(widget.Prompt(
-        prompt=prompt, font="Ubuntu Mono", padding=10,))
+    widgets.append(
+        widget.GroupBox(
+            **group_box_theme,
+        )
+    )
+    widgets.append(
+        widget.TaskList(
+            parse_text=lambda x: "",
+            highlight_method="block",
+            icon_size=ziba.bottom_bar_theme.icon_size,
+            border=ziba.bottom_bar_theme.color.foreground,
+            rounded=True,
+            padding=5,
+            txt_floating="🗗",
+            txt_maximized="🗖",
+            txt_minimized="🗕"
+        )
+    )
+    widgets.append(
+        widget.Prompt(
+            prompt=prompt,
+            font="Ubuntu Mono",
+            padding=10,
+        )
+    )
 
     widgets.append(widget.Spacer())
 
-    widgets.append(widget.KeyboardLayout(configured_keyboards=["us", "ir"]))
+    widgets.append(
+        widget.KeyboardLayout(
+            configured_keyboards=["us", "ir"],
+        )
+    )
 
-    widgets.append(widget.CurrentLayoutIcon(scale=.7))
-    widgets.append(widget.CurrentLayout())
+    widgets.append(
+        widget.CurrentLayoutIcon(
+            scale=.7,
+        )
+    )
+    widgets.append(
+        widget.CurrentLayout()
+    )
     return widgets
 
 
@@ -163,8 +250,12 @@ def secondary_top_widgets():
     return widgets
 
 
-# def parse_text(text:str):
-    # return text.split("")[-1]
+def parse_text(text: str):
+    if len(text) > 20:
+        return text[:20]
+    return text
+
+
 def secondary_bottom_widgets():
     """
     Init bottom bar widgets.
@@ -172,10 +263,10 @@ def secondary_bottom_widgets():
     widgets = []
     widgets.append(widget.GroupBox(**group_box_theme))
     widgets.append(widget.TaskList(
-        # parse_text=parse_text,
+        parse_text=parse_text,
         highlight_method="block",
         icon_size=ziba.bottom_bar_theme.icon_size,
-        border=ziba.bottom_bar_theme.foreground,
+        border=ziba.bottom_bar_theme.color.foreground,
         borderwidth=5,
         rounded=True,
         padding=5,
@@ -183,7 +274,7 @@ def secondary_bottom_widgets():
         txt_maximized="🗖",
         txt_minimized="🗕",
         spacing=2,
-        
+
     ))
     widgets.append(widget.Spacer())
     widgets.append(widget.CurrentLayoutIcon(scale=.7))
