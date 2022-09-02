@@ -1,6 +1,6 @@
 ## Alias section 
 
-alias dotfiles='/usr/bin/git --git-dir=/home/hassan/.dotfiles/ --work-tree=/home/hassan'
+alias dotfiles='/usr/bin/git --git-dir=/home/${USER}/.dotfiles/ --work-tree=/home/${USER}'
 
 alias W='cd /mnt/Workstation/'
 alias S='cd /mnt/Workstation/Sources/'
